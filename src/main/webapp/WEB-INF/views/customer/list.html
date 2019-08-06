@@ -11,6 +11,13 @@
 <a href="/provinces">Go to province management</a>
 <br>
 <hr>
+<div>
+    <form>
+        Search by name:
+        <input name="s" type="text"/>
+        <input type="submit" value="Search"/>
+    </form><br/>
+</div>
 <table border="1">
     <tr>
         <th>Name</th>
@@ -29,5 +36,10 @@
         </tr>
     </th:block>
 </table>
+<div>
+    <a th:href="@{'/customers'(page=${customers.number - 1})}" th:if="${    customers.hasPrevious()}">Previous</a>
+    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+    <a th:href="@{'/customers'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+</div>
 </body>
 </html>
